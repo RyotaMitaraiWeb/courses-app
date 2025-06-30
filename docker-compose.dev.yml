@@ -1,0 +1,57 @@
+services:
+  backend:
+    container_name: backend
+    restart: always
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./backend
+    ports:
+      - 3000:3000
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3000 || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    depends_on:
+      db:
+        condition: service_healthy
+  frontend:
+    container_name: frontend
+    restart: always
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./frontend
+    ports:
+      - 4200:4200
+    depends_on:
+      backend:
+        condition: service_healthy
+
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - ./postgresql:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: A!strongpassword1234
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_DB: courses-database
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      db:
+        condition: service_healthy
