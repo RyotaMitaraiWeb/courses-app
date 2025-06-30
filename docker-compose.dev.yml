@@ -1,0 +1,13 @@
+services:
+  backend:
+    container_name: backend
+    restart: always
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./backend
+    ports:
+      - 3000:3000
+    
