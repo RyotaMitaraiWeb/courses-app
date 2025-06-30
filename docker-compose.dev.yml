@@ -21,3 +21,18 @@ services:
       context: ./frontend
     ports:
       - 4200:4200
+    
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - ./postgresql:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: A!strongpassword1234
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_DB: courses-database
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
