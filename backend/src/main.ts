@@ -10,6 +10,7 @@ async function bootstrap() {
     .setDescription('API for courses web app')
     .setVersion('1.0')
     .build();
+
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('swagger/api', app, documentFactory);
 
