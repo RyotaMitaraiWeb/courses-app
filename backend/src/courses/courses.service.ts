@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Course } from '@prisma/client';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from '../prisma/prisma.service';
 import { UpdateCourseDto } from './dto/update-course.dto';
 import { SearchCoursesDto } from './dto/search-courses.dto';
 
