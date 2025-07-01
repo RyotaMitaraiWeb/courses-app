@@ -11,7 +11,7 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async validateUser(email: string, password: string): Promise<void> {
+  async validateUser(email: string, password: string): Promise<UserDto> {
     const user = await this.prisma.user.findFirst({ where: { email } });
     if (!user) throw new UnauthorizedException();
 
@@ -23,6 +23,11 @@ export class AuthService {
     if (!passwordMatches) {
       throw new UnauthorizedException();
     }
+
+    const dto = new UserDto();
+    dto.id = user.id;
+    dto.email = user.email;
+    return dto;
   }
 
   async login(user: UserDto) {
