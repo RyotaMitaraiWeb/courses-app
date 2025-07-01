@@ -16,13 +16,6 @@ export const courses: Course[] = [
     imagePath: 'javascript-for-dummies-course.png',
   },
   {
-    id: 1,
-    title: 'JavaScript for Dummies',
-    description:
-      'console.log("Learn how to make interactive web pages, web servers, mobile apps, and more.")',
-    imagePath: 'course-image-1.webp',
-  },
-  {
     id: 2,
     title: 'Java for JavaScript Developers',
     description: 'They are basically the same, right? Right...?',
