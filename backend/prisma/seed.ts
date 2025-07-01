@@ -1,5 +1,4 @@
-import { PrismaClient } from '../generated/prisma';
-import { User } from '../generated/prisma';
+import { PrismaClient, User } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
 
 const PASSWORD_HASH_SALT_ROUNDS = Number(process.env.PASSWORD_HASH_SALT_ROUNDS);
