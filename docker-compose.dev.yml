@@ -4,6 +4,7 @@ services:
     restart: always
     environment:
       - CORS_ORIGINS=http://localhost:4200
+      - PORT=3000
     volumes:
       - ./backend:/app
       - /app/node_modules
