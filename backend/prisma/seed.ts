@@ -1,5 +1,6 @@
 import { PrismaClient, User } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
+import { courses } from './courses';
 
 const PASSWORD_HASH_SALT_ROUNDS = Number(process.env.PASSWORD_HASH_SALT_ROUNDS);
 
@@ -32,6 +33,14 @@ async function main() {
       where: { id: user.id },
       update: {},
       create: { ...user, password: hashedPassword },
+    });
+  }
+
+  for (const course of courses) {
+    await prisma.course.upsert({
+      where: { id: course.id },
+      update: {},
+      create: { ...course },
     });
   }
 }

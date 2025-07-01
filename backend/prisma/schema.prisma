@@ -22,3 +22,10 @@ model User {
   email    String
   password String
 }
+
+model Course {
+  id          Int    @id @default(autoincrement())
+  title       String
+  description String
+  imagePath   String
+}
