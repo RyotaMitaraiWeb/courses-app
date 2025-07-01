@@ -15,6 +15,16 @@ async function bootstrap() {
     .setTitle('Courses')
     .setDescription('API for courses web app')
     .setVersion('1.0')
+    .addBearerAuth(
+      {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        name: 'Authorization',
+        in: 'header',
+      },
+      'jwt',
+    )
     .build();
 
   const documentFactory = () => SwaggerModule.createDocument(app, config);
