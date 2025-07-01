@@ -11,9 +11,7 @@ const mockPrismaService = {
   user: {
     findMany: jest.fn(),
     findUnique: jest.fn(),
-    // mock other model methods as needed
   },
-  // add other models/methods your app uses
 };
 
 describe('AppController (e2e)', () => {
