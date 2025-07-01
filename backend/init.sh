@@ -9,6 +9,12 @@ else
   echo ".env file already exists, skipping."
 fi
 
+echo "Applying Prisma migrations..."
+npx prisma migrate deploy
+
+echo "Preparing Prisma client..."
+npm install @prisma/client
+
 echo "Building NestJS project (generating Swagger schemas...)"
 npm run build
 
