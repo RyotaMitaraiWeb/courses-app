@@ -2,6 +2,8 @@ services:
   backend:
     container_name: backend
     restart: always
+    environment:
+      - CORS_ORIGINS=http://localhost:4200
     volumes:
       - ./backend:/app
       - /app/node_modules
