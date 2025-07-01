@@ -26,6 +26,8 @@ describe('AppController (e2e)', () => {
       .useValue(mockPrismaService)
       .compile();
 
+    process.env.JWT_SECRET = 'komnqeljkgnweknkjnjknkjqewnjkwenhjkwenhjkwehw';
+
     app = moduleFixture.createNestApplication();
 
     await app.init();
