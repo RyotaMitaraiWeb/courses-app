@@ -35,6 +35,12 @@ export class CoursesService {
     id: number,
     updateCourseDto: UpdateCourseDto,
   ): Promise<Course | null> {
+    const courseExists =
+      (await this.prisma.course.findUnique({ where: { id } })) !== null;
+    if (!courseExists) {
+      return null;
+    }
+
     return await this.prisma.course.update({
       where: { id },
       data: {
