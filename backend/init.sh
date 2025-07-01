@@ -13,7 +13,7 @@ echo "Applying Prisma migrations..."
 npx prisma migrate deploy
 
 echo "Preparing Prisma client..."
-npm install @prisma/client
+npx prisma generate
 
 echo "Building NestJS project (generating Swagger schemas...)"
 npm run build
