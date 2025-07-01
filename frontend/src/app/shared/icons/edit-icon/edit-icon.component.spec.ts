@@ -8,7 +8,7 @@ describe('EditIconComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EditIconComponent]
+      imports: [EditIconComponent],
     })
     .compileComponents();
 

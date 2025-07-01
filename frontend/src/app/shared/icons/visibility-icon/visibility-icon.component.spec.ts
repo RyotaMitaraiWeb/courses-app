@@ -8,7 +8,7 @@ describe('VisibilityIconComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [VisibilityIconComponent]
+      imports: [VisibilityIconComponent],
     })
     .compileComponents();
 

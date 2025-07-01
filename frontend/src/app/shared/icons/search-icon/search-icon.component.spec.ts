@@ -8,7 +8,7 @@ describe('SearchIconComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SearchIconComponent]
+      imports: [SearchIconComponent],
     })
     .compileComponents();
 

@@ -8,7 +8,7 @@ describe('CheckIconComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CheckIconComponent]
+      imports: [CheckIconComponent],
     })
     .compileComponents();
 
