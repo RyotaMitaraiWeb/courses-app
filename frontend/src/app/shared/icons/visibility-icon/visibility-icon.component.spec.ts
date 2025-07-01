@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { VisibilityIconComponent } from './visibility-icon.component';
+import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('VisibilityIconComponent', () => {
   let component: VisibilityIconComponent;
@@ -9,6 +10,7 @@ describe('VisibilityIconComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [VisibilityIconComponent],
+      providers: [provideZonelessChangeDetection()],
     })
     .compileComponents();
 

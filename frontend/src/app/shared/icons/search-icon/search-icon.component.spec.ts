@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchIconComponent } from './search-icon.component';
+import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('SearchIconComponent', () => {
   let component: SearchIconComponent;
@@ -9,6 +10,7 @@ describe('SearchIconComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [SearchIconComponent],
+      providers: [provideZonelessChangeDetection()],
     })
     .compileComponents();
 

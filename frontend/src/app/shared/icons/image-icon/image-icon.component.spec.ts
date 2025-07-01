@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ImageIconComponent } from './image-icon.component';
+import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('ImageIconComponent', () => {
   let component: ImageIconComponent;
@@ -9,6 +10,7 @@ describe('ImageIconComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ImageIconComponent],
+      providers: [provideZonelessChangeDetection()],
     })
     .compileComponents();
 
