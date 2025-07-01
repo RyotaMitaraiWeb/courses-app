@@ -7,19 +7,21 @@ import {
   NotFoundException,
   Put,
   UseGuards,
+  Query,
 } from '@nestjs/common';
 import { CoursesService } from './courses.service';
 import { UpdateCourseDto } from './dto/update-course.dto';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { ApiBearerAuth } from '@nestjs/swagger';
+import { SearchCoursesDto } from './dto/search-courses.dto';
 
 @Controller('courses')
 export class CoursesController {
   constructor(private readonly coursesService: CoursesService) {}
 
   @Get()
-  findAll() {
-    return this.coursesService.findAll();
+  async findAll(@Query() params: SearchCoursesDto) {
+    return await this.coursesService.findAll(params);
   }
 
   @Put(':id')
