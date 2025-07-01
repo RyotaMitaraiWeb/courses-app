@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Questrial&display=swap');
 
 @theme {
   --color-app-white: #ffffff;
@@ -10,4 +10,8 @@
   --color-app-blue-400: #30496a;
   --color-app-blue-500: #003170;
   --color-app-blue-600: #0B1829;
+
+  --font-playfair-display: "Playfair Display", serif;
+  --font-questrial: "Questrial", sans-serif;
 }
+
