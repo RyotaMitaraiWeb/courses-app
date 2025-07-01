@@ -6,9 +6,11 @@ import {
   ParseIntPipe,
   NotFoundException,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { CoursesService } from './courses.service';
 import { UpdateCourseDto } from './dto/update-course.dto';
+import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 
 @Controller('courses')
 export class CoursesController {
@@ -20,6 +22,7 @@ export class CoursesController {
   }
 
   @Put(':id')
+  @UseGuards(JwtAuthGuard)
   async update(
     @Param('id', ParseIntPipe) id: number,
     @Body() updateCourseDto: UpdateCourseDto,
