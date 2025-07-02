@@ -6,6 +6,6 @@
   <app-page-title>Courses</app-page-title>
 
   @for (course of courses; track course.id) {
-    <app-course-card [course]="course" />
+    <app-course-card [course]="course" (afterEdit)="refresh()" />
   }
 </main>

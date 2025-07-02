@@ -12,5 +12,5 @@
   </button>
 </article>
 } @else {
-  <app-course-card-form [course]="_course" />
+  <app-course-card-form (afterEdit)="handleEditResult()" [course]="_course" />
 }

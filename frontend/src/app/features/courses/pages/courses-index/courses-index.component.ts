@@ -43,4 +43,8 @@ export class CoursesIndexComponent {
         return courses.map(c => ({...c, imagePath: this.courseService.courseImagesUrl + '/' + c.imagePath}));
       }),
     );
+
+  refresh() {
+    this.coursesSubject.next();
+  }
 }

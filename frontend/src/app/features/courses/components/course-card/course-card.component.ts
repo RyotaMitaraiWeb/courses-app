@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output, signal } from '@angular/core';
 import { Course } from '../../types';
 import { CourseCardImageComponent } from '../course-card-image/course-card-image.component';
 import { TruncatePipe } from '../../pipes/truncate-pipe';
@@ -15,6 +15,7 @@ import { CourseCardFormComponent } from '../course-card-form/course-card-form.co
 })
 export class CourseCardComponent {
   course = input.required<Course>();
+  afterEdit = output();
   protected readonly editMode = signal(false);
 
   protected readonly maxDescriptionLength = 100;
@@ -22,5 +23,10 @@ export class CourseCardComponent {
 
   goInEditMode() {
     this.editMode.set(true);
+  }
+
+  handleEditResult() {
+    this.editMode.set(false);
+    this.afterEdit.emit();
   }
 }
