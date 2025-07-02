@@ -1,4 +1,7 @@
 <div tabindex="1" (keypress)="focusTextField()" (click)="focusTextField()"
   [class]="formFieldWrapperClasses()">
   <ng-content />
+  <div class="form-field-suffix">
+    <ng-content select="form-field-suffix" />
+  </div>
 </div>

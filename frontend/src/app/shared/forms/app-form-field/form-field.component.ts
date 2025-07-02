@@ -27,9 +27,8 @@ export class FormFieldComponent {
     'rounded-3xl',
     'flex',
     'flex-row',
+    'items-center',
     'gap-x-[10px]',
-    'py-2',
-    'px-4',
     'text-app-blue-500',
   ]);
 }
