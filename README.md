@@ -6,6 +6,13 @@ creating a PostgreSQL database and seeding it with courses and users. This setup
 
 Keep in mind that this setup requires rebuilding in certain scenarios. Examples include installing a new dependency, needing to run ``npm run build`` for any reason, and so on.
 
+In addition to the required services, this setup also provides **adminer**, an interface to connect to the PostgreSQL database. Use the following credentials to log in:
+
+- server - ``db`
+- user - ``postgres``
+- password - ``A!strongpassword1234``
+- database - ``courses-database``
+
 **Note:** if you get an error like this:
 
 ```bash
@@ -13,6 +20,9 @@ Keep in mind that this setup requires rebuilding in certain scenarios. Examples 
 ```
 
 make sure that the ``init.sh`` file in the ``backend`` directory uses ``LF`` as end line of sequence (and NOT CRLF)!
+
+## Environment
+The ``.dev`` variant of the Docker Compose file copies the content of ``sample.env`` in the ``backend`` project to an ``.env`` file. However, it only does that if the ``.env`` file is missing. Therefore, if you make any changes to ``sample.env``, **you need to delete the .env file** on the host machine.
 
 ## Seeding
 When using the Docker Compose file, it will seed the database with a few courses and users. The following users can be used to log in:
