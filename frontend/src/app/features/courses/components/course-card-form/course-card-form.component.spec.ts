@@ -8,7 +8,7 @@ describe('CourseCardFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CourseCardFormComponent]
+      imports: [CourseCardFormComponent],
     })
     .compileComponents();
 

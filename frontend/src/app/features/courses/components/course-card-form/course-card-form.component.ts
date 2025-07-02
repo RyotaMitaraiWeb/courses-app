@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, OnInit, output } from '@angular/core';
 import { Course } from '../../types';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CourseCardImageComponent } from '../course-card-image/course-card-image.component';
@@ -13,6 +13,7 @@ import { CheckIconComponent } from '../../../../shared/icons/check-icon/check-ic
 })
 export class CourseCardFormComponent implements OnInit {
   course = input.required<Course>();
+  afterEdit = output();
 
   readonly form = new FormGroup({
     title: new FormControl('', { validators: [Validators.required]}),
@@ -26,6 +27,6 @@ export class CourseCardFormComponent implements OnInit {
 
   submit(event: Event) {
     event.preventDefault();
-    console.log(this.form.value);
+    this.afterEdit.emit();
   }
 }
