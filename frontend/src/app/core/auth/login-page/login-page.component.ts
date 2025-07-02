@@ -7,7 +7,7 @@ import { VisibilityIconComponent } from '../../../shared/icons/visibility-icon/v
 import { VisibilityOffIconComponent } from '../../../shared/icons/visibility-off-icon/visibility-off-icon.component';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../services/auth/auth.service';
 import { ACCESS_TOKEN_KEY } from '../../../common/localStorage';
 import { Router } from '@angular/router';
 
