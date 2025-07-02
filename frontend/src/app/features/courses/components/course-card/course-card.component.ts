@@ -15,4 +15,5 @@ import { AuthenticatedOnly } from '../../../../core/auth/directives/authenticate
 export class CourseCardComponent {
   course = input.required<Course>();
   protected readonly maxDescriptionLength = 120;
+  protected readonly maxTitleLength = 20;
 }
