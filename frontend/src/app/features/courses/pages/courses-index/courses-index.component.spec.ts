@@ -1,0 +1,25 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { CoursesIndexComponent } from './courses-index.component';
+import { provideZonelessChangeDetection } from '@angular/core';
+
+describe('CoursesIndexComponent', () => {
+  let component: CoursesIndexComponent;
+  let fixture: ComponentFixture<CoursesIndexComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [CoursesIndexComponent],
+      providers: [provideZonelessChangeDetection()],
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(CoursesIndexComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
