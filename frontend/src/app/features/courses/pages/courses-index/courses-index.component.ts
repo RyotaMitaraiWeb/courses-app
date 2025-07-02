@@ -17,7 +17,7 @@ import { Course } from '../../types';
 export class CoursesIndexComponent {
   sampleCourse: Course = {
     id: 1,
-    title: 'test',
+    title: 'test we ewrer er er er wee',
     description: 'Lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor',
     imagePath: 'http://localhost:3000/static/courses-images/tango-course.png',
   };
