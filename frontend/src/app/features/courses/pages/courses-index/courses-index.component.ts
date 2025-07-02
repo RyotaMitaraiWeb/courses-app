@@ -7,8 +7,12 @@ import { GuestOnly } from '../../../../core/auth/directives/guest-only/guest-onl
 import { CourseCardComponent } from '../../components/course-card/course-card.component';
 import { Course } from '../../types';
 import { CourseService } from '../../services/course/course.service';
-import { BehaviorSubject, map, switchMap } from 'rxjs';
+import { combineLatest, map, startWith, Subject, switchMap } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormFieldComponent } from '../../../../shared/forms/app-form-field/form-field.component';
+import { Input } from '../../../../shared/forms/input';
+import { SearchIconComponent } from '../../../../shared/icons/search-icon/search-icon.component';
 
 @Component({
   selector: 'app-courses-index',
@@ -20,7 +24,11 @@ import { AsyncPipe } from '@angular/common';
     LoginButtonComponent,
     CourseCardComponent,
     AsyncPipe,
-  ],
+    ReactiveFormsModule,
+    FormFieldComponent,
+    Input,
+    SearchIconComponent,
+],
   templateUrl: './courses-index.component.html',
   styleUrl: './courses-index.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -34,17 +42,23 @@ export class CoursesIndexComponent {
   };
 
   private readonly courseService = inject(CourseService);
-  private readonly coursesSubject = new BehaviorSubject<void>(undefined);
+  private readonly refreshSubject = new Subject<void>();
+  private readonly refresh$ = this.refreshSubject.asObservable();
 
-  protected courses$ = this.coursesSubject
-    .asObservable().pipe(
-      switchMap(() => this.courseService.get({ query: '' })),
+  readonly query = new FormControl('');
+  readonly queryChanges$ = this.query.valueChanges.pipe(startWith(''));
+
+  readonly search$ = combineLatest([this.refresh$.pipe(startWith(null)), this.queryChanges$]);
+
+  protected courses$ = this.search$
+    .pipe(
+      switchMap((changes) => this.courseService.get({ query: changes[1] || '' })),
       map(courses => {
         return courses.map(c => ({...c, imagePath: this.courseService.courseImagesUrl + '/' + c.imagePath}));
       }),
     );
 
   refresh() {
-    this.coursesSubject.next();
+    this.refreshSubject.next();
   }
 }
