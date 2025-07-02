@@ -1,25 +1,25 @@
 import { ChangeDetectionStrategy, Component, provideZonelessChangeDetection } from '@angular/core';
-import { AuthenticatedOnly } from './authenticated-only';
+import { GuestOnly } from './guest-only';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserStore } from '../../services/user-store/user-store';
 
 @Component({
   template: `
-    <div id="test" *appAuthenticatedOnly>Authenticated Content</div>
+    <div id="test" *appGuestOnly>Guest Content</div>
   `,
   standalone: true,
-  imports: [AuthenticatedOnly],
+  imports: [GuestOnly],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class TestComponent {}
 
-describe('AuthenticatedOnly', () => {
+describe('GuestOnly', () => {
   let fixture: ComponentFixture<TestComponent>;
   let store: UserStore;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TestComponent, AuthenticatedOnly],
+      imports: [TestComponent, GuestOnly],
       providers: [UserStore, provideZonelessChangeDetection()],
 
     }).compileComponents();
@@ -36,18 +36,18 @@ describe('AuthenticatedOnly', () => {
 
     fixture.detectChanges();
 
-    expect(el()).toBeNull();
+    expect(el()).not.toBeNull();
 
     store.setUser({ id: 1, email: 'a' });
 
     fixture.detectChanges();
 
-    expect(el()).not.toBeNull();
+    expect(el()).toBeNull();
 
     store.logoutUser();
 
     fixture.detectChanges();
 
-    expect(el()).toBeNull();
+    expect(el()).not.toBeNull();
   });
 });
