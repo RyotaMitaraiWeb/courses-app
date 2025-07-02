@@ -8,7 +8,7 @@ describe('PageTitleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PageTitleComponent]
+      imports: [PageTitleComponent],
     })
     .compileComponents();
 

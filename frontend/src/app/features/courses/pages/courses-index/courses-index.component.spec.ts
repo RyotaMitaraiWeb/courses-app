@@ -8,7 +8,7 @@ describe('CoursesIndexComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CoursesIndexComponent]
+      imports: [CoursesIndexComponent],
     })
     .compileComponents();
 
