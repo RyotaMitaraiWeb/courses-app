@@ -7,7 +7,7 @@ import { GuestOnly } from '../../../../core/auth/directives/guest-only/guest-onl
 import { CourseCardComponent } from '../../components/course-card/course-card.component';
 import { Course } from '../../types';
 import { CourseService } from '../../services/course/course.service';
-import { combineLatest, map, startWith, Subject, switchMap } from 'rxjs';
+import { combineLatest, debounceTime, distinctUntilChanged, map, startWith, Subject, switchMap } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { FormFieldComponent } from '../../../../shared/forms/app-form-field/form-field.component';
@@ -46,7 +46,12 @@ export class CoursesIndexComponent {
   private readonly refresh$ = this.refreshSubject.asObservable();
 
   readonly query = new FormControl('');
-  readonly queryChanges$ = this.query.valueChanges.pipe(startWith(''));
+  readonly queryChanges$ = this.query.valueChanges
+    .pipe(
+      startWith(''),
+      debounceTime(500),
+      distinctUntilChanged(),
+    );
 
   readonly search$ = combineLatest([this.refresh$.pipe(startWith(null)), this.queryChanges$]);
 
