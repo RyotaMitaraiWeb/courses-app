@@ -1,9 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PageTitleComponent } from '../../../../shared/typography/page-title/page-title.component';
+import { LogoutButtonComponent } from '../../components/logout-button/logout-button.component';
+import { AuthenticatedOnly } from '../../../../core/auth/directives/authenticated-only/authenticated-only';
+import { LoginButtonComponent } from '../../components/login-button/login-button.component';
+import { GuestOnly } from '../../../../core/auth/directives/guest-only/guest-only';
 
 @Component({
   selector: 'app-courses-index',
-  imports: [PageTitleComponent],
+  imports: [PageTitleComponent, LogoutButtonComponent, AuthenticatedOnly, GuestOnly, LoginButtonComponent],
   templateUrl: './courses-index.component.html',
   styleUrl: './courses-index.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
