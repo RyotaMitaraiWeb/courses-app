@@ -13,7 +13,7 @@
       <app-form-field variant="fill" class="w-95">
         <input [formControl]="form.controls.password" placeholder="Your password"
           [type]="passwordVisibility ? 'text' : 'password'" appInput />
-        <button (click)="togglePasswordVisibility($event)" class="cursor-pointer h-max" ngProjectAs="form-field-suffix">
+        <button type="button" (click)="togglePasswordVisibility($event)" class="cursor-pointer h-max" ngProjectAs="form-field-suffix">
           @if (!passwordVisibility) {
           <app-visibility-icon className="w-6 h-6 fill-current" />
           } @else {
