@@ -6,10 +6,11 @@ import { DraftsIconComponent } from '../../../shared/icons/drafts-icon/drafts-ic
 import { VisibilityIconComponent } from '../../../shared/icons/visibility-icon/visibility-icon.component';
 import { VisibilityOffIconComponent } from '../../../shared/icons/visibility-off-icon/visibility-off-icon.component';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Subscription, switchMap, tap } from 'rxjs';
 import { AuthService } from '../services/auth/auth.service';
 import { ACCESS_TOKEN_KEY } from '../../../common/localStorage';
 import { Router } from '@angular/router';
+import { UserStore } from '../services/user-store/user-store';
 
 @Component({
   selector: 'app-login-page',
@@ -29,6 +30,7 @@ import { Router } from '@angular/router';
 export class LoginPageComponent implements OnDestroy {
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
+  private readonly userStore = inject(UserStore);
 
   passwordIsVisible = signal(false);
 
@@ -51,8 +53,13 @@ export class LoginPageComponent implements OnDestroy {
 
     this.loginSub = this.authService
       .login(loginCredentials)
-      .subscribe(response => {
-        localStorage.setItem(ACCESS_TOKEN_KEY, response.access_token);
+      .pipe(
+        tap(response => {
+          localStorage.setItem(ACCESS_TOKEN_KEY, response.access_token);
+        }),
+        switchMap(() => this.authService.refreshSession()),
+      ).subscribe(user => {
+        this.userStore.setUser(user);
         this.router.navigate(['/courses']);
       });
   }
