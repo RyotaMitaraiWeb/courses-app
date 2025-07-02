@@ -7,7 +7,7 @@
   <h2 class="font-playfair-display font-bold text-[26px] text-center">{{ _course.title | truncate: maxTitleLength }}</h2>
   <app-course-card-image [course]="_course" />
   <p class="text-center">{{ _course.description | truncate: maxDescriptionLength }}</p>
-  <button *appAuthenticatedOnly class="cursor-pointer absolute top-2 right-2 invisible group-hover:visible">
+  <button (click)="goInEditMode()" *appAuthenticatedOnly class="cursor-pointer absolute top-2 right-2 invisible group-hover:visible">
     <app-edit-icon className="w-6 h-6 fill-current" />
   </button>
 </article>

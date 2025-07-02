@@ -19,4 +19,8 @@ export class CourseCardComponent {
 
   protected readonly maxDescriptionLength = 100;
   protected readonly maxTitleLength = 20;
+
+  goInEditMode() {
+    this.editMode.set(true);
+  }
 }
