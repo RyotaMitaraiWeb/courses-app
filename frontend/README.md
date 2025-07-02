@@ -1,59 +1,41 @@
-# Frontend
+# Front-end section
+The front-end is written in Angular, using Tailwind CSS for styling.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.4.
+## Project navigation (``/src/app`` directory)
+- ``common`` - contains useful values that are used across the app, such as the ``localStorage`` key for the access token
+- ``core`` - contains components, services, and other elements related to core functionality. Core functionality refers to any cross-cutting concern (such as authentication)
+- ``features`` - contains components, services, and other elements related to and grouped by specific features of the app. For example, here you will find all components, services, directives, pipes, and so on, that are used to implement course-related features
+- ``shared`` - contains UI elements, directives, and so on that are reused throughout the app
 
-## Development server
+## Theming
 
-To start a local development server, run:
+The theming of the app consists of a custom color palette, specific fonts, and specific icons. All colors and fonts are stored as Tailwind CSS variables.
 
-```bash
-ng serve
+### Colors
+Colors are prefixed with ``app-`` (for example, ``--color-app-blue-300``). The following colors are available in the app:
+
+- ``app-white``
+- ``app-gray``
+- ``app-blue-[x00]`` where ``x`` is any integer from 1 to 6 (for example, ``app-blue-600``)
+
+### Typography
+The following fonts are available:
+
+- ``playfair-display`` (used in headings)
+- ``questrial`` (used as body text, default font)
+
+Note that the theming system provides only the fonts themselves. Elements like the font weight, size, and so on must be configured for each component
+
+All fonts are loaded directly from Google Fonts for convenience and are not stored locally within the repository.
+
+### Icons
+All icons are provided as separate components, which can be found in the ``shared/icons`` folder. This is done because the app uses a very small portion of the entire icon library and thus including the entire library would be an overkill. All of the icons are taken from Google Fonts / Icons.
+
+Each icon component accepts a ``className`` input, which applies styles directly to the ``<svg>`` icon in those. Note that each icon needs to be given a width and a height in order to be visible (as some icons in the app need to have a different size in different scenarios).
+
+#### Example
+```html
+<!-- a 24x24 icon that uses the current text color for its fill -->
+<app-search-icon className="w-6 h-6 fill-cururent" />
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
