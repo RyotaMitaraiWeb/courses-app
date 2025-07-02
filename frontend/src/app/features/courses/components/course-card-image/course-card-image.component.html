@@ -1,0 +1,6 @@
+@let _src = src();
+
+<div class="w-70 h-52 rounded-lg bg-app-blue-300 relative z-1 flex flex-col justify-center items-center">
+  <app-image-icon className="w-12 h-12 fill-app-blue-200" />
+  <div [style.background-image]="'url(' + _src + ')'" class="bg-cover w-full top-0 left-0 border-0 outline-0 rounded-lg h-full absolute z-2">
+</div>

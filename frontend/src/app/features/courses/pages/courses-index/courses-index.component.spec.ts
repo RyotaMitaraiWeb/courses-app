@@ -3,6 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CoursesIndexComponent } from './courses-index.component';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 describe('CoursesIndexComponent', () => {
   let component: CoursesIndexComponent;
@@ -11,7 +13,7 @@ describe('CoursesIndexComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CoursesIndexComponent],
-      providers: [provideZonelessChangeDetection(), provideRouter([])],
+      providers: [provideZonelessChangeDetection(), provideRouter([]), provideHttpClient(), provideHttpClientTesting()],
     })
     .compileComponents();
 
