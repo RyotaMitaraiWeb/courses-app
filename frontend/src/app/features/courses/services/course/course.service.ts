@@ -23,6 +23,6 @@ export class CourseService {
   }
 
   public edit(courseId: number, body: EditCourseBody) {
-    return this.http.put(this.endpoints.put(courseId), { body });
+    return this.http.put(this.endpoints.put(courseId), body);
   }
 }
