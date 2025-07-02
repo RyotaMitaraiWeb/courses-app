@@ -7,7 +7,7 @@
   <app-course-card-image [course]="_course" />
   <textarea placeholder="Description..." [formControl]="form.controls.description"
     class="flex-1 w-full text-center resize-none"></textarea>
-  <button type="submit" class="cursor-pointer absolute top-2 right-2">
+  <button [disabled]="form.invalid" type="submit" class="cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed absolute top-2 right-2">
     <app-check-icon className="w-6 h-6 fill-current" />
   </button>
 </form>
