@@ -15,8 +15,8 @@ import { CourseCardFormComponent } from '../course-card-form/course-card-form.co
 })
 export class CourseCardComponent {
   course = input.required<Course>();
-  protected readonly editMode = signal(true);
+  protected readonly editMode = signal(false);
 
-  protected readonly maxDescriptionLength = 120;
+  protected readonly maxDescriptionLength = 100;
   protected readonly maxTitleLength = 20;
 }
