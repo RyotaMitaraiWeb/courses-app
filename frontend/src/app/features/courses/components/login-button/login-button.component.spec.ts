@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginButtonComponent } from './login-button.component';
+import { provideZonelessChangeDetection } from '@angular/core';
+import { provideRouter } from '@angular/router';
 
 describe('LoginButtonComponent', () => {
   let component: LoginButtonComponent;
@@ -9,6 +11,7 @@ describe('LoginButtonComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [LoginButtonComponent],
+      providers: [provideRouter([]), provideZonelessChangeDetection()],
     })
     .compileComponents();
 
