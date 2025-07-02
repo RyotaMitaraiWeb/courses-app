@@ -1,8 +1,8 @@
 @let courses = (courses$ | async) || [];
 
-<main class="flex flex-col gap-y-14 pt-16 px-31 pb-32">
-  <app-logout-button class="h-10 flex items-center" *appAuthenticatedOnly />
-  <app-login-button class="h-10 flex items-center" *appGuestOnly />
+<main class="flex flex-col gap-y-14 pt-16 px-31 pb-32 items-center">
+  <app-logout-button class="h-10 flex items-center self-end" *appAuthenticatedOnly />
+  <app-login-button class="h-10 flex items-center self-end" *appGuestOnly />
 
   <app-page-title>Courses</app-page-title>
 
