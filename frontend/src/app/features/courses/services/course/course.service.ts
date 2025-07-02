@@ -9,6 +9,13 @@ const api = environment.apiUrl;
   providedIn: 'root',
 })
 export class CourseService {
+  static emptyCourse: Course = {
+    id: 0,
+    title: '',
+    description: '',
+    imagePath: '',
+  };
+
   private readonly http = inject(HttpClient);
   readonly endpoints = {
     get: `${api}/courses`,
