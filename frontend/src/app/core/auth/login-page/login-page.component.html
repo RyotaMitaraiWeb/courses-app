@@ -2,14 +2,14 @@
 
 <main class="flex flex-col gap-y-14 px-31 py-24">
   <app-page-title>Welcome</app-page-title>
-  <form class="mx-auto rounded-3xl bg-app-blue-200 flex flex-col gap-y-10 p-16">
+  <form [formGroup]="form" class="mx-auto rounded-3xl bg-app-blue-200 flex flex-col gap-y-10 p-16">
     <h2 class="font-playfair-display font-bold text-2xl text-center text-app-blue-600">Let’s get you logged-in</h2>
     <app-form-field variant="fill" class="w-95">
-      <input placeholder="Your email" appInput />
+      <input [formControl]="form.controls.email" placeholder="Your email" appInput />
       <app-drafts-icon ngProjectAs="form-field-suffix" className="w-6 h-6 fill-current" />
     </app-form-field>
     <app-form-field variant="fill" class="w-95">
-      <input placeholder="Your password" [type]="passwordVisibility ? 'text' : 'password'" appInput />
+      <input [formControl]="form.controls.password" placeholder="Your password" [type]="passwordVisibility ? 'text' : 'password'" appInput />
       <button (click)="togglePasswordVisibility($event)" class="cursor-pointer h-max" ngProjectAs="form-field-suffix">
         @if (!passwordVisibility) {
         <app-visibility-icon className="w-6 h-6 fill-current" />
@@ -18,7 +18,7 @@
         }
       </button>
     </app-form-field>
-    <button disabled
+    <button [disabled]="form.invalid"
       class="cursor-pointer disabled:cursor-not-allowed bg-app-white disabled:bg-app-gray disabled:text-app-blue-400 rounded-4xl text-app-blue-500 w-31 h-10 mx-auto">Log-in</button>
   </form>
 </main>

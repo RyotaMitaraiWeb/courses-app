@@ -5,10 +5,19 @@ import { Input } from '../../../shared/forms/input';
 import { DraftsIconComponent } from '../../../shared/icons/drafts-icon/drafts-icon.component';
 import { VisibilityIconComponent } from '../../../shared/icons/visibility-icon/visibility-icon.component';
 import { VisibilityOffIconComponent } from '../../../shared/icons/visibility-off-icon/visibility-off-icon.component';
+import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-page',
-  imports: [PageTitleComponent, FormFieldComponent, Input, DraftsIconComponent, VisibilityIconComponent, VisibilityOffIconComponent],
+  imports: [
+    PageTitleComponent,
+    FormFieldComponent,
+    Input,
+    DraftsIconComponent,
+    VisibilityIconComponent,
+    VisibilityOffIconComponent,
+    ReactiveFormsModule,
+  ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -20,4 +29,9 @@ export class LoginPageComponent {
     event.preventDefault();
     this.passwordIsVisible.update(v => !v);
   }
+
+  readonly form = new FormGroup({
+    email: new FormControl('', { validators: [Validators.email, Validators.required]}),
+    password: new FormControl('', { validators: [Validators.required]}),
+  });
 }
