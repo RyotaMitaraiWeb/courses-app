@@ -2,7 +2,9 @@
 
 ## How to run with Docker Compose
 This is the recommended way to run the app. The provided ``docker-compose.dev.yml`` file has everything you need to spin up the app - it does not require any additional actions from you. It will take care of everything, including
-creating a PostgreSQL database and seeding it with courses and users
+creating a PostgreSQL database and seeding it with courses and users. This setup also allows development, as it implements mounting which makes hot reloading possible with code changes from the host machine.
+
+Keep in mind that this setup requires rebuilding in certain scenarios. Examples include installing a new dependency, needing to run ``npm run build`` for any reason, and so on.
 
 **Note:** if you get an error like this:
 
